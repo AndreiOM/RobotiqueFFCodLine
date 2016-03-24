@@ -47,21 +47,37 @@ void printLine()
 {
 	/*
 	 * TODO: Cititi senzorii si trimiteti valorile citite prin interfata seriala.
-	 * Pentru citire folositi qtr.read(sensors). Functia va citi senzorii care au fost initializati
-	 * la declararea lui qtr si va pune valorile in vectorul sensors.
+	 * Pentru citire folositi qtr.read(senzori). Functia va citi senzorii care au fost initializati
+	 * la declararea lui qtr si va pune valorile in vectorul senzori.
 	 */
 
 }
 
 long getProportional()
 {
-
+	/*
+	 * TODO: Functie ce va returna termenul proportional. 
+	 * 
+	 * Folositi functia qtr.readLine(senzori).
+	 * Aceasta copiaza valorile citite in vectorul senzori si returneaza un int intre 0 si 7000,
+	 * 0 insemnand ca linia este sub senzorul 1 si 7000 insemnand ca linia este sub senzorul 8.
+	 * 
+	 * Termenul proportional este reprezentat de devierea de la conditia dorita. Se doreste ca
+	 * linia sa se afle pe centru, deci functia va returna o valoare proportionala cu devierea
+	 * liniei de la centru. Aceasta va fi negativa daca se afla in stanga si pozitiva daca se 
+	 * afla in dreapta.
+	 */
+	
 	return 0;
 }
 
 double computePID()
 {
-
+	/*
+	 * Aplicati algoritmul PID
+	 */
+	 
+	 
 	return 0;
 }
 
@@ -74,18 +90,31 @@ void setup()
 	pinMode(MOTOR2A, OUTPUT);
 	pinMode(MOTOR2B, OUTPUT);
 
-	delay(3000);
+	for (i = 0; i < 125; i++)  { //calibrare senzori
+		qtr.calibrate();
+		delay(20);
+	}
 }
 
 
 void loop()
 {
 
-
+	setMotors(0,0);
 	
-
-
-
+	for(int i = 0 ; i < 20 ; i++) {
+		printLine();
+		delay(50);
+	}
+	
+	setMotors(40, 0);
+	delay(500);
+	setMotors(0, 40);
+	delay(500);
+	setMotors(-40, 0);
+	delay(500);
+	setMotors(0, -40);
+	delay(500);
 	
 
 	/*
