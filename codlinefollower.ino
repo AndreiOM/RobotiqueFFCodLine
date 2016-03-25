@@ -90,7 +90,7 @@ void setup()
 	pinMode(MOTOR2A, OUTPUT);
 	pinMode(MOTOR2B, OUTPUT);
 
-	for (i = 0; i < 125; i++)  { //calibrare senzori
+	for (int i = 0; i < 125; i++)  { //calibrare senzori
 		qtr.calibrate();
 		delay(20);
 	}
