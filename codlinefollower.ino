@@ -17,12 +17,12 @@ const unsigned int LINIE8 = x;
 //ENDTODO
 
 //PID
-const float KP = 1.0;
+const float KP = 0.5;
 const float KD = 0.0;
 const float KI = 0.0;
 
-int last_p = 0;
-int integral = 0;
+double last_p = 0;
+double integral = 0;
 //ENDPID
 
 const int SPEED = 30;
@@ -55,6 +55,7 @@ void printLine()
 
 long getProportional()
 {
+	long propotional;
 	/*
 	 * TODO: Functie ce va returna termenul proportional. 
 	 * 
@@ -68,17 +69,23 @@ long getProportional()
 	 * afla in dreapta.
 	 */
 	
-	return 0;
+	
+	return return propotional;
 }
 
 double computePID()
 {
+	double proportional;
+	double derivative;
 	/*
-	 * Aplicati algoritmul PID
+	 * Aplicati algoritmul PID 
+	 * integral este o variabila globala definita mai sus.
+	 * Folositi last_p pentru a calcula termenul derivat.
 	 */
 	 
 	 
-	return 0;
+	 
+	return KP * proportional + KI * integral + KD * derivative;
 }
 
 void setup()
@@ -89,10 +96,13 @@ void setup()
 	pinMode(MOTOR1B, OUTPUT);
 	pinMode(MOTOR2A, OUTPUT);
 	pinMode(MOTOR2B, OUTPUT);
+	pinMode(13, OUTPUT); //pinul cu led
 
 	for (int i = 0; i < 125; i++)  { //calibrare senzori
+		digitalWrite(13, HIGH); //semnalare calibrare prin led-ul legat la pinul 13
 		qtr.calibrate();
 		delay(20);
+		digitalWrite(13, LOW);
 	}
 }
 
@@ -126,8 +136,8 @@ void loop()
 	} else 
 
 	if(pid < 0) {
-		int a = constrain(0, 255, SPEED - pid);
-		int b = constrain(0, 255, SPEED + pid);
+		int a = constrain(0, 255, SPEED + pid);
+		int b = constrain(0, 255, SPEED - pid);
 		setMotors(a, b);
 	} else {
 		setMotors(SPEED, SPEED);
