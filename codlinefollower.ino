@@ -55,7 +55,7 @@ void printLine()
 
 long getProportional()
 {
-	long propotional;
+	long proportional;
 	/*
 	 * TODO: Functie ce va returna termenul proportional. 
 	 * 
@@ -70,7 +70,7 @@ long getProportional()
 	 */
 	
 	
-	return return propotional;
+	return return proportional;
 }
 
 double computePID()
@@ -98,12 +98,14 @@ void setup()
 	pinMode(MOTOR2B, OUTPUT);
 	pinMode(13, OUTPUT); //pinul cu led
 
+	digitalWrite(13, HIGH);
 	for (int i = 0; i < 125; i++)  { //calibrare senzori
-		digitalWrite(13, HIGH); //semnalare calibrare prin led-ul legat la pinul 13
+		 //semnalare calibrare prin led-ul legat la pinul 13
 		qtr.calibrate();
 		delay(20);
-		digitalWrite(13, LOW);
+		
 	}
+	digitalWrite(13, LOW);
 }
 
 
@@ -128,16 +130,16 @@ void loop()
 	
 
 	/*
-	int pid = computePID();
+	float pid = computePID();
 	if(pid > 0) {
-		int a = constrain(0, 255, SPEED + pid);
-		int b = constrain(0, 255, SPEED - pid);
+		int a = constrain(SPEED + pid, 0, 255);
+		int b = constrain(SPEED - pid, 0, 255);
 		setMotors(a, b);
 	} else 
 
 	if(pid < 0) {
-		int a = constrain(0, 255, SPEED + pid);
-		int b = constrain(0, 255, SPEED - pid);
+		int a = constrain(SPEED + pid, 0, 255);
+		int b = constrain(SPEED - pid, 0, 255);
 		setMotors(a, b);
 	} else {
 		setMotors(SPEED, SPEED);
