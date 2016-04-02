@@ -70,7 +70,7 @@ long getProportional()
 	 */
 	
 	
-	return return proportional;
+	return proportional;
 }
 
 double computePID()
