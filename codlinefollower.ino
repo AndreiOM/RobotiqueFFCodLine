@@ -131,19 +131,11 @@ void loop()
 
 	/*
 	float pid = computePID();
-	if(pid > 0) {
-		int a = constrain(SPEED + pid, 0, 255);
-		int b = constrain(SPEED - pid, 0, 255);
-		setMotors(a, b);
-	} else 
+	
+	int a = constrain(SPEED + pid, 0, 255);
+	int b = constrain(SPEED - pid, 0, 255);
+	setMotors(a, b);
 
-	if(pid < 0) {
-		int a = constrain(SPEED + pid, 0, 255);
-		int b = constrain(SPEED - pid, 0, 255);
-		setMotors(a, b);
-	} else {
-		setMotors(SPEED, SPEED);
-	}
 	*/
 
 }
